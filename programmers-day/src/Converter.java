@@ -1,12 +1,12 @@
 public class Converter {
-    double metersAmountInStep = 0.00075;
-    double caloriesInStep = 0.05;
+    private double Meters_Amount_I_nStep = 0.00075;
+    private double Calories_In_Step = 0.05;
 
-    double getDistance (int steps) {
-        return steps * metersAmountInStep;
+    double getDistance (int stepsKm) {
+        return stepsKm * Meters_Amount_I_nStep;
     }
 
-    double getCalories (int steps) {
-        return steps * caloriesInStep;
+    double getCalories (int stepsCal) {
+        return stepsCal * Calories_In_Step;
     }
 }
