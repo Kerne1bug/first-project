@@ -40,11 +40,7 @@ public class StepTracker { // 3 метода: 1) статистика 2) зап�
     }
 
     double meanStepsMonth(int monthNumber) { //средние шаги за месяц
-        double meanSteps = 0;
-        for (int i = 0; i < monthData[monthNumber].length; i++) {
-            meanSteps += monthData[monthNumber][i];
-        }
-        return meanSteps / 30; //разделили на 30 так как месяц фиксированный но можно и массив сюда воткнуть
+        return getTotalSteps(monthNumber) / 30;
     }
 
     int getBestSeries(int monthNumber) { // лучшая серия подряд идущих дней
@@ -52,10 +48,12 @@ public class StepTracker { // 3 метода: 1) статистика 2) зап�
         int currentSeries = 0;
         for (int i = 0; i < monthData[monthNumber].length; i++) {
             if (monthData[monthNumber][i] >= targetSteps) {
-                currentSeries += 1;// увеличиваем курент на 1
-                if (currentSeries > bestSeries) { //избавились от else if - надо проверять обновилась ли лушая серия на каждом цикле (ошибся в логике)
-                    bestSeries = currentSeries; // и приравняли
+                currentSeries += 1; // увеличиваем курент на 1
+                if (currentSeries > bestSeries) {
+                    bestSeries = currentSeries;
                 }
+            } else { // для обнуления счетчика
+                currentSeries = 0;
             }
         }
         return bestSeries;
